@@ -1,0 +1,32 @@
+{
+  "name": "kudos-node-api",
+  "version": "1.0.0",
+  "description": "kudos partner api used for integrating partner system with kudos system",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "pm2 stop server.js",
+    "start": "pm2 start server.js",
+    "postinstall": "cd public/reactjs && npm install && npm run-script build",
+    "server": "nodemon server.js",
+    "client": "cd public/reactjs && npm start",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run dev",
+    "dev": "concurrently  \"npm run server\" \"npm run client\"",
+    "clean-dev": "kill -9 $(lsof -t -i:4001) && concurrently  \"npm run server\" \"npm run client\"",
+    "build": "cd public/reactjs && npm run-script build"
+  },
+  "author": "Rohit Dhore",
+  "license": "ISC",
+  "dependencies": {
+    "await": "^0.2.6",
+    "bcryptjs": "^2.4.3",
+    "composable-middleware": "^0.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^2.0.2",
+    "sequelize": "^5.21.2",
+    "concurrently": "^5.0.0"
+  }
+}
